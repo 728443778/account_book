@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'account_book',
+    'name' => '个人账本',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
