@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\tools\Table;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -32,7 +33,7 @@ class AccountBook extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'account_book';
+        return Table::TABLE_ACCOUNT_BOOK;
     }
 
     public function behaviors()
