@@ -5,6 +5,7 @@ namespace app\models;
 use app\tools\Table;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -16,7 +17,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $created_at
  * @property int $updated_at
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -33,6 +34,17 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getId()
+    {
+        // TODO: Implement getId() method.
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        // TODO: Implement getAuthKey() method.
+    }
+
 
     /**
      * {@inheritdoc}
@@ -47,6 +59,31 @@ class User extends \yii\db\ActiveRecord
             [['password'], 'string', 'max' => 255],
             [['username'], 'unique'],
         ];
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        // TODO: Implement validateAuthKey() method.
+    }
+
+    public static function findIdentity($id)
+    {
+        return static::findOne(['id' => $id]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method.
+    }
+
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 
     /**
