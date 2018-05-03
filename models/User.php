@@ -19,6 +19,10 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+
+    const STATUS_ACTIVE = 1;
+    const STATUS_NO_ACTIVE = 0;
+
     /**
      * {@inheritdoc}
      */
@@ -52,9 +56,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'password'], 'required'],
+            [['status'], 'default', 'value' => null],
+            [['status'], 'integer'],
             [['username'], 'string', 'max' => 32],
             [['password'], 'string', 'max' => 255],
             [['username'], 'unique'],
