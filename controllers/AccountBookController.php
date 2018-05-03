@@ -115,6 +115,7 @@ class AccountBookController extends Controller
      */
     public function actionDelete($id)
     {
+        exit('forbidden');
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
