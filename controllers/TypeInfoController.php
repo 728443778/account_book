@@ -115,6 +115,7 @@ class TypeInfoController extends Controller
      */
     public function actionDelete($id)
     {
+        exit('not allow');
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
