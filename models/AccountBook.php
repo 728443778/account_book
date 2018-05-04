@@ -56,6 +56,7 @@ class AccountBook extends \yii\db\ActiveRecord
             [['type'], 'in', 'range' => [self::TYPE_SHOURU, self::TYPE_ZHICHU]],
             [['amount'], 'number'],
             [['comment'], 'string', 'max' => 512],
+            ['type_info_id', 'exist', 'targetClass' => TypeInfo::class, 'targetAttribute' => ['type_info_id' => 'id']],
         ];
     }
 
