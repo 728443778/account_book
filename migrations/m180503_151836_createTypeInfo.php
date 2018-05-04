@@ -12,7 +12,10 @@ class m180503_151836_createTypeInfo extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable(\app\tools\Table::TABLE_TYPE_INFO, [
+            'id' => $this->primaryKey()->unsigned(),
+            'name' => $this->string()
+        ]);
     }
 
     /**
@@ -20,9 +23,7 @@ class m180503_151836_createTypeInfo extends Migration
      */
     public function safeDown()
     {
-        echo "m180503_151836_createTypeInfo cannot be reverted.\n";
-
-        return false;
+        $this->dropTable(\app\tools\Table::TABLE_TYPE_INFO);
     }
 
     /*

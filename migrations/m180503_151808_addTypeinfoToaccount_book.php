@@ -12,7 +12,7 @@ class m180503_151808_addTypeinfoToaccount_book extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(\app\tools\Table::TABLE_ACCOUNT_BOOK, 'type_info_id', $this->integer()->unsigned());;
     }
 
     /**
@@ -20,9 +20,7 @@ class m180503_151808_addTypeinfoToaccount_book extends Migration
      */
     public function safeDown()
     {
-        echo "m180503_151808_addTypeinfoToaccount_book cannot be reverted.\n";
-
-        return false;
+        $this->dropColumn(\app\tools\Table::TABLE_ACCOUNT_BOOK, 'type_info_id');
     }
 
     /*
