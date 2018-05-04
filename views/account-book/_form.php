@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\AccountBook */
 /* @var $form yii\widgets\ActiveForm */
+
+$typeInfos = \app\models\AccountBook::getTypeInfos();
 ?>
 
 <div class="account-book-form">
@@ -13,6 +15,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'type')->dropDownList(\app\models\AccountBook::$types, []) ?>
+
+    <?= $form->field($model, 'type_info_id')->dropDownList($typeInfos, []) ?>
 
     <?= $form->field($model, 'amount')->textInput() ?>
 

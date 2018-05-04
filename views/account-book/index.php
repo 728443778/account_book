@@ -27,6 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'type',
                 'value' => 'typeName'
             ],
+            [
+                'attribute' => 'type_info_id',
+                'value' => 'typeInfoName'
+            ],
             'amount',
             'comment',
             'created_at:datetime',

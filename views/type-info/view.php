@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\AccountBook */
+/* @var $model app\models\TypeInfo */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Type Infos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="account-book-view">
+<div class="type-info-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,12 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'typeName',
-            'typeInfoName',
-            'amount',
-            'comment',
-            'created_at:datetime',
-            'updated_at:datetime'
+            'name',
         ],
     ]) ?>
 

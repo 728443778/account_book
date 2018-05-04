@@ -13,6 +13,28 @@ use app\assets\AppAsset;
 AppAsset::register($this);
 
 $this->title = 'Account Books';
+if (Yii::$app->user->isGuest) {
+    $items = [
+        ['label' => 'Login', 'url' => ['/site/login']]
+    ];
+} else {
+    $items = [
+        [
+            'label' => '类型管理', 'url' => ['/type-info/index']
+        ],
+        [
+            'label' => '账本管理', 'url' => ['/account-book/index']
+        ],
+            '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>'
+    ];
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,20 +61,7 @@ $this->title = 'Account Books';
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $items
     ]);
     NavBar::end();
     ?>
