@@ -2,13 +2,17 @@
 
 namespace app\controllers;
 
+use app\services\AccountBookStatistics;
+use sevenUtils\utils\TimeStamp;
 use Yii;
 use app\models\AccountBook;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\web\Application;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * AccountBookController implements the CRUD actions for AccountBook model.
@@ -23,7 +27,6 @@ class AccountBookController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'update', 'view', 'delete'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -135,5 +138,50 @@ class AccountBookController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionStatisticsPay()
+    {
+        $amount = AccountBookStatistics::getInstance()->statisticsPay(); //统计所有的
+        \yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'code' => 0,
+            'amount' => $amount
+        ];
+    }
+
+    public function actionStatisticsRevenue()
+    {
+        $amount = AccountBookStatistics::getInstance()->statisticsRevenue();
+        \yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'code' => 0,
+            'amount' => $amount
+        ];
+    }
+
+    public function actionStatisticsCurrentMonthPay()
+    {
+        //获得当前月的开始时间
+        $timeStart = TimeStamp::getInstance()->getCurrentMonthStartUnixTime();
+        $timeEnd = TimeStamp::getInstance()->getCurrentMonthEndUnixTime();
+        $amount = AccountBookStatistics::getInstance()->statisticsPay($timeStart, $timeEnd);
+        \yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'code' => 0,
+            'amount' => $amount
+        ];
+    }
+
+    public function actionStatisticsCurrentMonthRevenue()
+    {
+        $timeStart = TimeStamp::getInstance()->getCurrentMonthStartUnixTime();
+        $timeEnd = TimeStamp::getInstance()->getCurrentMonthEndUnixTime();
+        $amount = AccountBookStatistics::getInstance()->statisticsRevenue($timeStart, $timeEnd);
+        \yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'code' => 0,
+            'amount' => $amount
+        ];
     }
 }
