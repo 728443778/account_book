@@ -18,13 +18,13 @@ class AccountBookStatistics
         $query = new Query();
         $query->from(AccountBook::tableName())->where(['type' => AccountBook::TYPE_ZHICHU]);
         if ($createdAtStart > 0) {
-            $query->where(['>', 'created_at', $createdAtStart]);
+            $query->andWhere(['>', 'created_at', $createdAtStart]);
         }
         if ($createdAtEnd > 0) {
-            $query->where(['<=', 'created_at', $createdAtEnd]);
+            $query->andWhere(['<=', 'created_at', $createdAtEnd]);
         }
         if ($typeInfoId > 0) {
-            $query->where(['type_info_id' => $typeInfoId]);
+            $query->andWhere(['type_info_id' => $typeInfoId]);
         }
         return $query->sum('amount');
     }
@@ -37,13 +37,13 @@ class AccountBookStatistics
         $query = new Query();
         $query->from(AccountBook::tableName())->where(['type' => AccountBook::TYPE_SHOURU]);
         if ($createdAtStart > 0) {
-            $query->where(['>', 'created_at', $createdAtStart]);
+            $query->andWhere(['>', 'created_at', $createdAtStart]);
         }
         if ($createdAtEnd > 0) {
-            $query->where(['<=', 'created_at', $createdAtEnd]);
+            $query->andWhere(['<=', 'created_at', $createdAtEnd]);
         }
         if ($typeInfoId > 0) {
-            $query->where(['type_info_id' => $typeInfoId]);
+            $query->andWhere(['type_info_id' => $typeInfoId]);
         }
         return $query->sum('amount');
     }
