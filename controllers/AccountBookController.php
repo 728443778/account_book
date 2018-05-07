@@ -142,7 +142,7 @@ class AccountBookController extends Controller
 
     public function actionStatisticsPay()
     {
-        $amount = AccountBookStatistics::getInstance()->statisticsPay(); //统计所有的
+        $amount = (float)AccountBookStatistics::getInstance()->statisticsPay(); //统计所有的
         \yii::$app->response->format = Response::FORMAT_JSON;
         return [
             'code' => 0,
@@ -152,7 +152,7 @@ class AccountBookController extends Controller
 
     public function actionStatisticsRevenue()
     {
-        $amount = AccountBookStatistics::getInstance()->statisticsRevenue();
+        $amount = (float)AccountBookStatistics::getInstance()->statisticsRevenue();
         \yii::$app->response->format = Response::FORMAT_JSON;
         return [
             'code' => 0,
@@ -165,7 +165,7 @@ class AccountBookController extends Controller
         //获得当前月的开始时间
         $timeStart = TimeStamp::getInstance()->getCurrentMonthStartUnixTime();
         $timeEnd = TimeStamp::getInstance()->getCurrentMonthEndUnixTime();
-        $amount = AccountBookStatistics::getInstance()->statisticsPay($timeStart, $timeEnd);
+        $amount = (float)AccountBookStatistics::getInstance()->statisticsPay($timeStart, $timeEnd);
         \yii::$app->response->format = Response::FORMAT_JSON;
         return [
             'code' => 0,
@@ -177,7 +177,7 @@ class AccountBookController extends Controller
     {
         $timeStart = TimeStamp::getInstance()->getCurrentMonthStartUnixTime();
         $timeEnd = TimeStamp::getInstance()->getCurrentMonthEndUnixTime();
-        $amount = AccountBookStatistics::getInstance()->statisticsRevenue($timeStart, $timeEnd);
+        $amount = (float)AccountBookStatistics::getInstance()->statisticsRevenue($timeStart, $timeEnd);
         \yii::$app->response->format = Response::FORMAT_JSON;
         return [
             'code' => 0,

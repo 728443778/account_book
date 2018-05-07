@@ -25,8 +25,8 @@ class AccountBook extends \yii\db\ActiveRecord
     const TYPE_ZHICHU = 2;
 
     public static $types = [
-        1 => '支出',
-        2 => '收入'
+        1 => '收入',
+        2 => '支出'
     ];
 
     public static $typeInfos = [];
