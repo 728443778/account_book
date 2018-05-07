@@ -66,25 +66,25 @@ $this->params['breadcrumbs'][] = $this->title;
     xmlhttpPay.onreadystatechange = function () {
         if (xmlhttpPay.readyState == 4 && xmlhttpPay.status == 200) {
             data = eval("(" + xmlhttpPay.responseText + ")")
-            document.getElementById("statistics_pay").innerText = data.amount;
+            document.getElementById("statistics_pay").innerText = data.amount + " ￥";
         }
     }
     xmlHttpRevenue.onreadystatechange = function () {
         if (xmlHttpRevenue.readyState == 4 && xmlHttpRevenue.status == 200) {
             data = eval("(" + xmlHttpRevenue.responseText + ")")
-            document.getElementById("statistics_revenue").innerText = data.amount;
+            document.getElementById("statistics_revenue").innerText = data.amount + " ￥";
         }
     }
     xmlHttpCurrentMonthPay.onreadystatechange = function () {
         if (xmlHttpCurrentMonthPay.readyState == 4 && xmlHttpCurrentMonthPay.status == 200) {
             data = eval("(" + xmlHttpCurrentMonthPay.responseText + ")")
-            document.getElementById("statistics_month_pay").innerText = data.amount;
+            document.getElementById("statistics_month_pay").innerText = data.amount + " ￥";
         }
     }
     xmlHttpCurrentMonthRevenue.onreadystatechange = function () {
         if (xmlHttpCurrentMonthRevenue.readyState == 4 && xmlHttpCurrentMonthRevenue.status == 200) {
             data = eval("(" + xmlHttpCurrentMonthRevenue.responseText + ")")
-            document.getElementById("statistics_month_revenue").innerText = data.amount;
+            document.getElementById("statistics_month_revenue").innerText = data.amount + " ￥";
         }
     }
 </script>
