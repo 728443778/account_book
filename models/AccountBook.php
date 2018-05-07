@@ -20,13 +20,13 @@ use yii\behaviors\TimestampBehavior;
 class AccountBook extends \yii\db\ActiveRecord
 {
 
-    const TYPE_SHOURU = 1;
+    const TYPE_SHOURU = 2;
 
-    const TYPE_ZHICHU = 2;
+    const TYPE_ZHICHU = 1;
 
     public static $types = [
-        1 => '收入',
-        2 => '支出'
+        1 => '支出',
+        2 => '收入'
     ];
 
     public static $typeInfos = [];
