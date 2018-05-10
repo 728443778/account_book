@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\AccountBook */
 
 $this->title = 'Create Account Book';
-$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index?sort=-id']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-book-create">

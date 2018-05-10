@@ -12,7 +12,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'defaultRoute' => 'account-book/index',
+    'defaultRoute' => 'account-book/index?sort=-id',
     'timeZone' => 'Asia/Shanghai',
     'components' => [
         'request' => [

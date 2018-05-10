@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\AccountBook */
 
 $this->title = 'Update Account Book: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index?sort=-id']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
