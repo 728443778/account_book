@@ -58,6 +58,18 @@ class AccountBookController extends Controller
         ]);
     }
 
+    public function actionHome()
+    {
+        Yii::$app->getRequest()->setQueryParams(['sort' => '-id']);
+        $dataProvider = new ActiveDataProvider([
+            'query' => AccountBook::find(),
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single AccountBook model.
      * @param integer $id
