@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\AccountBook */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index?sort=-id']];
+$this->params['breadcrumbs'][] = ['label' => 'Account Books', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-book-view">

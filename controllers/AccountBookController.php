@@ -49,18 +49,10 @@ class AccountBookController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => AccountBook::find(),
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionHome()
-    {
-        Yii::$app->getRequest()->setQueryParams(['sort' => '-id']);
+        $request = Yii::$app->getRequest();
+        if (!$request->getQueryParam('sort')) {
+            $request->setQueryParams(['sort' => '-id']);
+        }
         $dataProvider = new ActiveDataProvider([
             'query' => AccountBook::find(),
         ]);

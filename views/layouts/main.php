@@ -23,7 +23,7 @@ if (Yii::$app->user->isGuest) {
             'label' => '类型管理', 'url' => ['/type-info/index']
         ],
         [
-            'label' => '账本管理', 'url' => ['/account-book/index?sort=-id']
+            'label' => '账本管理', 'url' => ['/account-book/index']
         ],
             '<li>'
             . Html::beginForm(['/site/logout'], 'post')
